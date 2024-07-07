@@ -19,9 +19,16 @@ class App extends Component<InputFormProps, AppState> {
   }
 
   fetchData = async () => {
+    const lastRequest = localStorage.getItem('lastRequest')?.trim();
+
     try {
-      const response = await axios.get<{ results: Pokemon[] }>(LINK.POKEAPI);
-      this.setState({ resultsData: response.data.results });
+      if (lastRequest) {
+        const response = await axios.get<Pokemon>(`${LINK.POKEAPI}/${lastRequest}`);
+        this.setState({ resultsData: [response.data] });
+      } else {
+        const response = await axios.get<{ results: Pokemon[] }>(LINK.POKEAPI);
+        this.setState({ resultsData: response.data.results });
+      }
     } catch (error) {
       console.error('Error fetching data:', error);
     }

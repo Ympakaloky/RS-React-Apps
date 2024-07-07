@@ -8,16 +8,14 @@ interface ResultsProps {
 
 const Results: React.FC<ResultsProps> = ({ data }) => {
   return (
-    <div className="resultField">
-      <ul>
-        {data.map((item, index) => (
-          <li key={index} className="fetchResults">
-            <div className="name">Name: {item.name}</div>
-            <div className="description"> Description: {item.url}</div>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul>
+      {data.map((item, index) => (
+        <li key={index} className="fetchResults">
+          <div>Name: {item.name}</div>
+          <div> Description: {item.url}</div>
+        </li>
+      ))}
+    </ul>
   );
 };
 
