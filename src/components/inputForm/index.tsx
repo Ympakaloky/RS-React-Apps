@@ -1,11 +1,6 @@
 import { Component, ChangeEvent, MouseEventHandler } from 'react';
 import './inputForm.css';
-
-interface InputFormProps {}
-
-interface InputFormState {
-  textValue: string;
-}
+import { InputFormProps, InputFormState } from '../../store/Interface';
 
 class InputForm extends Component<InputFormProps, InputFormState> {
   constructor(props: InputFormProps) {
