@@ -5,18 +5,11 @@ form {
   margin-bottom: 2rem;
 }
 
-label {
-  width: 70%;
-}
-
 input {
+  width: 70%;
   padding: 0.5rem;
 }
 
-.searchInput {
-  width: 100%;
-}
-
-.searchBtn {
+button {
   width: 20%;
 }

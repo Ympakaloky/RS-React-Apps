@@ -1,79 +1,54 @@
 import { Component, ChangeEvent, MouseEventHandler } from 'react';
 import './inputForm.css';
 
-// const lastRequest = localStorage.getItem('lastRequest');
+interface InputFormProps {}
 
-class InputForm extends Component {
-  constructor(props: {}) {
+interface InputFormState {
+  textValue: string;
+}
+
+class InputForm extends Component<InputFormProps, InputFormState> {
+  constructor(props: InputFormProps) {
     super(props);
     this.state = {
       textValue: '',
     };
   }
 
-  // changeText(e: ChangeEvent<HTMLInputElement>) {
-  // 	this.setState({
-  // 		textValue: e.target.value,
-  // 	});
-  // }
+  componentDidMount() {
+    const lastRequest = localStorage.getItem('lastRequest');
+    if (lastRequest) {
+      this.setState({
+        textValue: lastRequest,
+      });
+    }
+  }
 
-  // handleSearchInput: MouseEventHandler<HTMLButtonElement> = (event) => {
-  // 	event.preventDefault();
-  // 	this.setState({
-  // 		inputValue: this.state.textValue,
-  // 	});
-  // 	console.log(this.state.textValue);
-  // 	localStorage.setItem('lastRequest', this.state.inputValue);
-  // };
-
-  // render() {
-  // 	return (
-  // <form>
-  // 	<label>
-  // 		<input
-  // 			type="text"
-  // 			name="search"
-  // 			className="searchInput"
-  // 			value={this.state.textValue}
-  // 			onChange={this.changeText.bind(this)}
-  // 		/>
-  // 	</label>
-  // 	<button type="submit" value="search" className="searchBtn" onClick={this.handleSearchInput}>
-  // 		Search
-  // 	</button>
-  // </form>
-  // 	);
-  // }
-
-  state = {
-    age: 42,
-  };
-
-  handleAgeChange = () => {
+  changeText(e: ChangeEvent<HTMLInputElement>) {
+    const newValue = e.target.value;
     this.setState({
-      age: this.state.age + 1,
+      textValue: newValue,
     });
+  }
+
+  handleSearchInput: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.preventDefault();
+    this.setState({
+      textValue: this.state.textValue,
+    });
+    localStorage.setItem('lastRequest', this.state.textValue);
   };
 
   render() {
     return (
       <>
         <form>
-          <label>
-            <input
-              type="text"
-              name="search"
-              className="searchInput"
-              // value={this.state.textValue}
-              // onChange={this.changeText.bind(this)}
-            />
-          </label>
-          <button type="submit" value="search" className="searchBtn">
+          <input type="text" name="search" value={this.state.textValue} onChange={this.changeText.bind(this)} />
+
+          <button type="submit" value="search" onClick={this.handleSearchInput}>
             Search
           </button>
         </form>
-        <button onClick={this.handleAgeChange}>Increment age</button>
-        <p>You are {this.state.age}.</p>
       </>
     );
   }
