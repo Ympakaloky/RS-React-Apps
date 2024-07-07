@@ -1,0 +1,22 @@
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+label {
+  width: 70%;
+}
+
+input {
+  padding: 0.5rem;
+}
+
+.searchInput {
+  width: 100%;
+}
+
+.searchBtn {
+  width: 20%;
+}

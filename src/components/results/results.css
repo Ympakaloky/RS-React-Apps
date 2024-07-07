@@ -1,0 +1,7 @@
+.resultField {
+  padding: 2rem;
+  border-style: solid;
+  border-radius: 15px;
+  border-width: 3px;
+  min-height: 50vh;
+}

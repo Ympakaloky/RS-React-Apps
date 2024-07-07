@@ -1,0 +1,11 @@
+{
+  "folders": [
+    {
+      "path": "../../..",
+    },
+  ],
+  "settings": {
+    "files.eol": "\n",
+    "liveServer.settings.multiRootWorkspaceName": "news-api",
+  },
+}
