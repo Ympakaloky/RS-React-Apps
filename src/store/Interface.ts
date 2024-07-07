@@ -12,3 +12,7 @@ export interface InputFormState {
 export interface AppState {
   resultsData: Pokemon[];
 }
+
+export interface InputFormPropsExtended extends InputFormProps {
+  onSearch: (pokemonName?: string) => void;
+}

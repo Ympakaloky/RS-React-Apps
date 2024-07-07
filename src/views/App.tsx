@@ -3,7 +3,7 @@ import InputForm from '../components/inputForm';
 import Results from '../components/results';
 import './App.css';
 import { LINK } from '../store/enum';
-import { AppState, InputFormProps, Pokemon } from '../store/Interface';
+import { AppState, InputFormProps, Pokemon } from '../store/interface';
 import { Component } from 'react';
 
 class App extends Component<InputFormProps, AppState> {
@@ -18,8 +18,8 @@ class App extends Component<InputFormProps, AppState> {
     this.fetchData();
   }
 
-  fetchData = async () => {
-    const lastRequest = localStorage.getItem('lastRequest')?.trim();
+  fetchData = async (pokemonName?: string) => {
+    const lastRequest = pokemonName || localStorage.getItem('lastRequest')?.trim();
 
     try {
       if (lastRequest) {
@@ -39,7 +39,7 @@ class App extends Component<InputFormProps, AppState> {
 
     return (
       <>
-        <InputForm />
+        <InputForm onSearch={this.fetchData} />
         <Results data={resultsData} />
       </>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pokemon } from '../../store/Interface';
+import { Pokemon } from '../../store/interface';
 import './results.css';
 
 interface ResultsProps {

@@ -1,9 +1,9 @@
-import { Component, ChangeEvent, MouseEventHandler } from 'react';
+import { Component, ChangeEvent, FormEvent } from 'react';
 import './inputForm.css';
-import { InputFormProps, InputFormState } from '../../store/Interface';
+import { InputFormPropsExtended, InputFormState } from '../../store/interface';
 
-class InputForm extends Component<InputFormProps, InputFormState> {
-  constructor(props: InputFormProps) {
+class InputForm extends Component<InputFormPropsExtended, InputFormState> {
+  constructor(props: InputFormPropsExtended) {
     super(props);
     this.state = {
       textValue: '',
@@ -19,32 +19,25 @@ class InputForm extends Component<InputFormProps, InputFormState> {
     }
   }
 
-  changeText(e: ChangeEvent<HTMLInputElement>) {
+  changeText = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     this.setState({
       textValue: newValue,
     });
-  }
+  };
 
-  handleSearchInput: MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.preventDefault();
-    this.setState({
-      textValue: this.state.textValue,
-    });
+  handleSearchInput = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    this.props.onSearch(this.state.textValue);
     localStorage.setItem('lastRequest', this.state.textValue);
   };
 
   render() {
     return (
-      <>
-        <form>
-          <input type="text" name="search" value={this.state.textValue} onChange={this.changeText.bind(this)} />
-
-          <button type="submit" value="search" onClick={this.handleSearchInput}>
-            Search
-          </button>
-        </form>
-      </>
+      <form onSubmit={this.handleSearchInput}>
+        <input type="text" name="search" value={this.state.textValue} onChange={this.changeText} />
+        <button type="submit">Search</button>
+      </form>
     );
   }
 }
