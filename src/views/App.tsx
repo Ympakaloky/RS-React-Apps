@@ -40,6 +40,7 @@ class App extends Component<InputFormProps, AppState> {
     return (
       <>
         <InputForm onSearch={this.fetchData} />
+
         <Results data={resultsData} />
       </>
     );
