@@ -36,7 +36,11 @@ class InputForm extends Component<InputFormPropsExtended, InputFormState> {
   throwError = () => {
     console.log('ERROR');
     this.setState({ error: true });
-    throw new Error('Simulated error.');
+    try {
+      throw new Error('Simulated error from InputForm');
+    } catch (error) {
+      this.props.onError(error as Error, { componentStack: '' });
+    }
   };
 
   render() {
@@ -44,7 +48,7 @@ class InputForm extends Component<InputFormPropsExtended, InputFormState> {
       <form onSubmit={this.handleSearchInput}>
         <input type="text" name="search" value={this.state.textValue} onChange={this.changeText} />
         <button type="submit">Search</button>
-        <button className="errorBtn" onClick={this.throwError}>
+        <button type="button" className="errorBtn" onClick={this.throwError}>
           Error
         </button>
       </form>
