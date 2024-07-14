@@ -1,8 +1,7 @@
-import React from 'react';
 import { ResultsProps } from '../../store/interface';
 import './results.css';
 
-const Results: React.FC<ResultsProps> = ({ data }) => {
+function Results({ data }: ResultsProps) {
   return (
     <ul>
       {data.map((item) => (
@@ -13,6 +12,6 @@ const Results: React.FC<ResultsProps> = ({ data }) => {
       ))}
     </ul>
   );
-};
+}
 
 export default Results;
