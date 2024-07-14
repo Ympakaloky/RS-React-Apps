@@ -1,3 +1,4 @@
+import React from 'react';
 import { ResultsProps } from '../../store/interface';
 import './results.css';
 

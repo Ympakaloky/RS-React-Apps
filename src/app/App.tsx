@@ -1,3 +1,4 @@
+import React from 'react';
 import InputForm from '../components/inputForm';
 import Results from '../components/results';
 import './App.css';
