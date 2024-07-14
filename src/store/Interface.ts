@@ -38,3 +38,9 @@ export interface ErrorBoundaryProps {
 export interface ResultsProps {
   data: Pokemon[];
 }
+
+export interface PaginationProps {
+  count: number;
+  page: number;
+  onChange: (newPage: number) => void;
+}
