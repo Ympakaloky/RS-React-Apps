@@ -13,6 +13,7 @@ export interface InputFormState {
 export interface AppState {
   resultsData: Pokemon[];
   error: boolean;
+  isLoading: boolean;
 }
 
 export interface InputFormProps {
