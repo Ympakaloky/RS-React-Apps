@@ -3,7 +3,7 @@ import './inputForm.css';
 import { InputFormProps } from '../../store/interface';
 
 function InputForm({ onSearch, onError }: InputFormProps) {
-  const [textValue, setTextValue] = useState('');
+  const [textValue, setTextValue] = useState(localStorage.getItem('lastRequest') || '');
 
   function handleSearchInput(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
