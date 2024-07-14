@@ -40,7 +40,6 @@ function App() {
 
   return (
     <>
-      Hello world
       <InputForm onSearch={fetch} onError={handleError} />
       <Results data={resultsData} />
     </>

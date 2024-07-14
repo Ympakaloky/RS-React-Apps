@@ -18,6 +18,7 @@ export interface AppState {
 
 export interface InputFormProps {
   onSearch: (searchingWord?: string) => Promise<void>;
+  onError: (error: Error, info: { componentStack: string }) => void;
 }
 
 export interface InputFormPropsExtended extends InputFormProps {
