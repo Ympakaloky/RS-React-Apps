@@ -7,6 +7,7 @@ export interface InputFormProps {}
 
 export interface InputFormState {
   textValue: string;
+  error: boolean;
 }
 
 export interface AppState {

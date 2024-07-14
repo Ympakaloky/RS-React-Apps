@@ -13,3 +13,7 @@ input {
 button {
   width: 20%;
 }
+
+.errorBtn {
+  background-color: red;
+}

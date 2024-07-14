@@ -7,6 +7,7 @@ class InputForm extends Component<InputFormPropsExtended, InputFormState> {
     super(props);
     this.state = {
       textValue: '',
+      error: false,
     };
   }
 
@@ -29,7 +30,12 @@ class InputForm extends Component<InputFormPropsExtended, InputFormState> {
   handleSearchInput = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     this.props.onSearch(this.state.textValue);
-    localStorage.setItem('lastRequest', this.state.textValue);
+    localStorage.setItem('lastRequest', this.state.textValue.trim());
+  };
+
+  throwError = () => {
+    console.log('ERROR');
+    this.setState({ error: true });
   };
 
   render() {
@@ -37,6 +43,9 @@ class InputForm extends Component<InputFormPropsExtended, InputFormState> {
       <form onSubmit={this.handleSearchInput}>
         <input type="text" name="search" value={this.state.textValue} onChange={this.changeText} />
         <button type="submit">Search</button>
+        <button className="errorBtn" onClick={this.throwError}>
+          Error
+        </button>
       </form>
     );
   }
