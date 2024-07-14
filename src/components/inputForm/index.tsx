@@ -36,6 +36,7 @@ class InputForm extends Component<InputFormPropsExtended, InputFormState> {
   throwError = () => {
     console.log('ERROR');
     this.setState({ error: true });
+    throw new Error('Simulated error.');
   };
 
   render() {

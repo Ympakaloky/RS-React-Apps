@@ -7,18 +7,26 @@ interface ErrorBoundaryProps {
 
 interface ErrorBoundaryState {
   hasError: boolean;
+  errorMessage: string | null;
 }
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  constructor(props: ErrorBoundaryProps) {
-    super(props);
-    this.state = { hasError: false };
+  state: ErrorBoundaryState = {
+    hasError: false,
+    errorMessage: null,
+  };
+
+  static getDerivedStateFromError(error: Error): Partial<ErrorBoundaryState> {
+    return { hasError: true, errorMessage: error.toString() };
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
-    console.error('Uncaught error:', error, info);
-    return { hasError: true };
+    this.logErrorToServices(error.toString(), info.componentStack || '');
   }
+
+  logErrorToServices = (errorMessage: string, componentStack: string) => {
+    console.log(errorMessage, componentStack);
+  };
 
   render() {
     if (this.state.hasError) {
