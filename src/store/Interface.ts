@@ -33,3 +33,7 @@ export interface ErrorBoundaryProps {
   fallback: ReactNode;
   children: ReactNode;
 }
+
+export interface ResultsProps {
+  data: Pokemon[];
+}

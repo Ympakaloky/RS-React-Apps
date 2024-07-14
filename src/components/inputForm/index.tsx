@@ -1,6 +1,6 @@
 import { Component, ChangeEvent, FormEvent } from 'react';
 import './inputForm.css';
-import { InputFormPropsExtended, InputFormState } from '../../store/interface';
+import { InputFormPropsExtended, InputFormState } from '../../store/Interface';
 
 class InputForm extends Component<InputFormPropsExtended, InputFormState> {
   constructor(props: InputFormPropsExtended) {
@@ -55,5 +55,40 @@ class InputForm extends Component<InputFormPropsExtended, InputFormState> {
     );
   }
 }
+
+// function InputForm() {
+//   const [textValue, setTextValue] = useState('');
+//   const [errorStatus, setErrorStatus] = useState(false);
+
+//   function handleSearchInput(e: FormEvent<HTMLFormElement>) {
+//     e.preventDefault();
+//     // this.props.onSearch(this.state.textValue);
+//     localStorage.setItem('lastRequest', textValue.trim());
+//   }
+
+//   function changeText(e: ChangeEvent<HTMLInputElement>) {
+//     const newValue = e.target.value;
+//     setTextValue(newValue);
+//   }
+
+//   function throwError() {
+//     setErrorStatus(true);
+//     try {
+//       throw new Error('Simulated error from InputForm');
+//     } catch (error) {
+//       // this.props.onError(error as Error, { componentStack: '' });
+//     }
+//   }
+
+//   return (
+//     <form onSubmit={handleSearchInput}>
+//       <input type="text" name="search" value={textValue} onChange={changeText} />
+//       <button type="submit">Search</button>
+//       <button type="button" className="errorBtn" onClick={throwError}>
+//         Error
+//       </button>
+//     </form>
+//   );
+// }
 
 export default InputForm;

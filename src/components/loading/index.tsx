@@ -1,6 +1,6 @@
 import './loading.css';
 
-const Loading = () => {
+function Loading() {
   return (
     <>
       <p>Loading...</p>
@@ -9,6 +9,6 @@ const Loading = () => {
       </div>
     </>
   );
-};
+}
 
 export default Loading;
