@@ -51,17 +51,19 @@ function Results({ data }: ResultsProps) {
           </li>
         ))}
       </ul>
-      <div>
-        <button onClick={handlePrevious} disabled={currentPage === 1}>
-          Previous
-        </button>
-        <span>
-          Page {currentPage} of {totalPages}
-        </span>
-        <button onClick={handleNext} disabled={currentPage === totalPages}>
-          Next
-        </button>
-      </div>
+      {cards.length > 1 && (
+        <div>
+          <button onClick={handlePrevious} disabled={currentPage === 1}>
+            Previous
+          </button>
+          <span>
+            Page {currentPage} of {totalPages}
+          </span>
+          <button onClick={handleNext} disabled={currentPage === totalPages}>
+            Next
+          </button>
+        </div>
+      )}
     </>
   );
 }
