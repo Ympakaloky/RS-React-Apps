@@ -18,6 +18,7 @@ export interface AppState {
 
 export interface InputFormProps {
   onSearch: (searchingWord?: string) => Promise<void>;
+  onError: (error: Error, info: { componentStack: string }) => void;
 }
 
 export interface InputFormPropsExtended extends InputFormProps {
@@ -32,4 +33,14 @@ export interface ErrorBoundaryState {
 export interface ErrorBoundaryProps {
   fallback: ReactNode;
   children: ReactNode;
+}
+
+export interface ResultsProps {
+  data: Pokemon[];
+}
+
+export interface PaginationProps {
+  count: number;
+  page: number;
+  onChange: (newPage: number) => void;
 }
