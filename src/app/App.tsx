@@ -15,7 +15,9 @@ function App() {
   async function fetch(searchingWord: string = '') {
     const response = async () => {
       setIsLoading(true);
-      const data = await fetchData(searchingWord ? `${LINK.POKEAPI}/${searchingWord}` : `${LINK.POKEAPI}`);
+      const data = await fetchData(
+        searchingWord ? `${LINK.POKEAPI}/${searchingWord}` : `${LINK.POKEAPI}?limit=4&offset=0`,
+      );
       setResultData(data);
       setIsLoading(false);
     };

@@ -3,26 +3,43 @@ import { ResultsProps } from '../../store/interface';
 import './results.css';
 import fetchData from '../../services/fetchData';
 import { LINK } from '../../store/enum';
+import Loading from '../loading';
 
 function Results({ data }: ResultsProps) {
   const pageElements = 4;
-  const totalPages = Math.ceil(data.length / pageElements);
+  const totalPages = 100;
   const [currentPage, setCurrentPage] = useState(1);
   const [cards, setCards] = useState(data);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handlePrevious = () => {
+  const handlePrevious = async () => {
+    setIsLoading(true);
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+      const newPage = currentPage - 1;
+      setCurrentPage(newPage);
+      const currentData = await fetchData(
+        `${LINK.POKEAPI}?limit=${pageElements}&offset=${pageElements * (newPage - 1)}`,
+      );
+      setCards(currentData);
     }
+    setIsLoading(false);
   };
 
   const handleNext = async () => {
+    setIsLoading(true);
     if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-      const currentData = await fetchData(`${LINK.POKEAPI}?limit=5&offset=0`);
+      const newPage = currentPage + 1;
+      setCurrentPage(newPage);
+      const currentData = await fetchData(
+        `${LINK.POKEAPI}?limit=${pageElements}&offset=${pageElements * (newPage - 1)}`,
+      );
       setCards(currentData);
     }
+    setIsLoading(false);
   };
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <>
