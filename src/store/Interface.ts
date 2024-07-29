@@ -19,6 +19,8 @@ export interface AppState {
 export interface InputFormProps {
   onSearch: (searchingWord?: string) => Promise<void>;
   onError: (error: Error, info: { componentStack: string }) => void;
+  theme: string;
+  setTheme: (theme: string) => void;
 }
 
 export interface InputFormPropsExtended extends InputFormProps {
@@ -37,10 +39,37 @@ export interface ErrorBoundaryProps {
 
 export interface ResultsProps {
   data: Pokemon[];
+  setSelectedName?: (value: string) => void;
+  click?: number;
+  setClick?: (click: number) => void;
 }
 
 export interface PaginationProps {
-  count: number;
-  page: number;
-  onChange: (newPage: number) => void;
+  totalPages: number;
+}
+
+export interface DetailsProps {
+  name: string;
+  click: number;
+}
+
+export interface PokemonProps {
+  name: string;
+  sprites: {
+    front_default: string | null | undefined;
+  };
+  abilities: {
+    ability: {
+      name: string;
+    };
+  }[];
+}
+
+export interface ToggleSwitchProps {
+  initialChecked?: boolean;
+  onChange?: (checked: boolean) => void;
+}
+
+export interface CheckBoxProps {
+  name: string;
 }

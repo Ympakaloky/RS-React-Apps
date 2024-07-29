@@ -1,0 +1,12 @@
+.paginationBtn {
+  width: 100px;
+  height: 30px;
+  margin: 10px;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}

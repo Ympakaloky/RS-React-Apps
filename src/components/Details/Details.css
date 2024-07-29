@@ -1,0 +1,12 @@
+.detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+
+  border: solid;
+  border-radius: 15px;
+  border-color: var(--background-accent);
+  padding: 10px;
+}
